@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leganet Internet Solutions</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700;900&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .font-display { font-family: 'Cinzel Decorative', serif; }
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+    [data-page] { display: none; }
+    [data-page].active-page { display: block; }
+    .nav-solid { background: rgba(255,251,245,0.97) !important; box-shadow: 0 1px 12px rgba(0,0,0,0.06); }
+    .nav-active { color: #F97316 !important; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-answer.open { max-height: 300px; }
+    .faq-chevron { transition: transform 0.3s; }
+    .faq-chevron.open { transform: rotate(180deg); }
+    .blob-shape { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+  </style>
+</head>
+<body class="w-full min-h-screen" style="background: rgb(255, 251, 245);">
+
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-2">
+        <!-- TODO: replace with your logo file, e.g. "assets/logo.png" -->
+        <img class="w-14 h-14 object-cover" loading="lazy" src="assets/logo.png" alt="Leganet wifi logo">
+        <span class="font-display text-xl font-bold" style="font-weight: 700; font-size: 22px;"></span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#home" data-nav="home" class="text-sm font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-size: 16px;">Home</a>
+        <a href="#services" data-nav="services" class="text-sm font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-size: 16px;">Services</a>
+        <a href="#products" data-nav="products" class="text-sm font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-size: 16px;">Products</a>
+        <a href="#about" data-nav="about" class="text-sm font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-size: 16px;">About</a>
+        <a href="#contact" data-nav="contact" class="text-sm font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-size: 16px;">Contact</a>
+        <a href="#contact" class="px-5 py-2.5 rounded-full text-sm font-semibold transition-transform hover:scale-105" style="background: rgb(249, 115, 22); color: rgb(255, 255, 255); font-weight: 600; font-size: 16px;">Get Started</a>
+      </div>
+      <button id="menu-btn" class="md:hidden text-gray-800" aria-label="Menu"><i data-lucide="menu" style="width:26px;height:26px"></i></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur px-6 pb-4 shadow-lg">
+      <a href="#home" class="block py-2.5 text-gray-700 hover:text-orange-500 font-medium">Home</a>
+      <a href="#services" class="block py-2.5 text-gray-700 hover:text-orange-500 font-medium">Services</a>
+      <a href="#products" class="block py-2.5 text-gray-700 hover:text-orange-500 font-medium">Products</a>
+      <a href="#about" class="block py-2.5 text-gray-700 hover:text-orange-500 font-medium">About</a>
+      <a href="#contact" class="block py-2.5 text-gray-700 hover:text-orange-500 font-medium">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ===== HOME ===== -->
+  <div data-page="home">
+    <!-- Hero -->
+    <header class="w-full pt-36 pb-20 px-6" style="background: rgb(255, 251, 245);">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div class="fade-in">
+          <span class="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6" style="background: rgb(255, 243, 224); color: rgb(249, 115, 22); font-weight: 600; font-size: 16px;">Connecting Ghana</span>
+          <h1 class="font-display mb-6 leading-tight" style="color: rgb(26, 26, 46); font-weight: 700; font-size: 52px;">You've never had internet like this.</h1>
+          <p class="mb-8 leading-relaxed max-w-lg" style="color: rgb(85, 85, 85); font-size: 18px;">Premium Starlink installation, Wi-Fi solutions, and high-speed internet for homes, schools, hospitals, and businesses across Ghana. Enjoy fast, reliable, unlimited internet with Leganet.</p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#services" class="inline-block px-7 py-3.5 rounded-full font-semibold transition-transform hover:scale-105" style="background: rgb(249, 115, 22); color: rgb(255, 255, 255); font-weight: 700; font-size: 16px;">Explore Services</a>
+            <a href="#contact" class="inline-block px-7 py-3.5 rounded-full font-semibold border-2 border-orange-300 transition-transform hover:scale-105" style="background: transparent; color: rgb(249, 115, 22); font-weight: 700; font-size: 16px;">Contact Us</a>
+          </div>
+        </div>
+        <div class="fade-in relative flex justify-center">
+          <div class="blob-shape bg-gradient-to-br from-orange-200 to-orange-100 w-80 h-80 md:w-96 md:h-96 absolute -z-0"></div>
+          <!-- TODO: replace with your image, e.g. "assets/hero-dish.jpg" -->
+          <img class="relative z-10 w-72 h-72 md:w-80 md:h-80 object-cover rounded-3xl shadow-xl" loading="lazy" src="assets/hero-dish.jpg" alt="Starlink satellite dish mounted on rooftop">
+        </div>
+      </div>
+    </header>
+
+    <!-- Brands -->
+    <section class="w-full py-12 px-6" style="background: rgb(248, 244, 238);">
+      <div class="max-w-7xl mx-auto text-center">
+        <p class="text-sm uppercase tracking-widest mb-8" style="color: rgb(156, 163, 175); font-size: 12px;">TRUSTED BY BUSINESSES ACROSS GHANA</p>
+        <div class="flex flex-wrap justify-center gap-8 md:gap-14">
+          <span class="font-bold text-lg opacity-40" style="color: rgb(26, 26, 46); font-size: 18px;">uni. of cape coast</span>
+          <span class="font-bold text-lg opacity-40" style="color: rgb(26, 26, 46); font-size: 18px;">Golden Tulip Hotels</span>
+          <span class="font-bold text-lg opacity-40" style="color: rgb(26, 26, 46); font-size: 18px;">Tema Industrial Zone</span>
+          <span class="font-bold text-lg opacity-40" style="color: rgb(26, 26, 46); font-size: 18px;">UG Campus</span>
+          <span class="font-bold text-lg opacity-40" style="color: rgb(26, 26, 46); font-size: 18px;">Cape Coast Medical</span>
+          <span class="font-bold text-lg opacity-40" style="color: rgb(26, 26, 46); font-size: 18px;">Kumasi Market</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- What We Do -->
+    <section class="w-full py-20 px-6" style="background: rgb(255, 251, 245);">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-14 fade-in">
+          <h2 class="font-display mb-4" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 40px;">Next Generation Internet Solutions</h2>
+          <p class="max-w-2xl mx-auto" style="color: rgb(102, 102, 102); font-size: 18px;">From satellite internet to campus-wide networks, we deliver end-to-end connectivity solutions tailored to your needs.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8 mb-12">
+          <div class="card-hover bg-white rounded-2xl p-8 text-center shadow-sm fade-in">
+            <div class="w-14 h-14 mx-auto mb-5 bg-orange-100 rounded-full flex items-center justify-center"><i data-lucide="satellite-dish" style="width:28px;height:28px;color:#F97316"></i></div>
+            <h3 class="font-bold mb-2" style="color: rgb(26, 26, 46); font-size: 20px;">Starlink Satellite</h3>
+            <p style="color: rgb(102, 102, 102); font-size: 15px;">Lightning-fast speeds from space. Up to 200+ Mbps downloads with low latency, perfect for any location in Ghana.</p>
+          </div>
+          <div class="card-hover bg-white rounded-2xl p-8 text-center shadow-sm fade-in">
+            <div class="w-14 h-14 mx-auto mb-5 bg-orange-100 rounded-full flex items-center justify-center"><i data-lucide="wifi" style="width:28px;height:28px;color:#F97316"></i></div>
+            <h3 class="font-bold mb-2" style="color: rgb(26, 26, 46); font-size: 20px;">WiFi Installation</h3>
+            <p style="color: rgb(102, 102, 102); font-size: 15px;">Professional home and office WiFi setup with mesh systems, access points, and full network infrastructure.</p>
+          </div>
+          <div class="card-hover bg-white rounded-2xl p-8 text-center shadow-sm fade-in">
+            <div class="w-14 h-14 mx-auto mb-5 bg-orange-100 rounded-full flex items-center justify-center"><i data-lucide="building" style="width:28px;height:28px;color:#F97316"></i></div>
+            <h3 class="font-bold mb-2" style="color: rgb(26, 26, 46); font-size: 20px;">Institutional Networks</h3>
+            <p style="color: rgb(102, 102, 102); font-size: 15px;">Dedicated internet solutions for schools, hospitals, hotels, and warehouses across the country.</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4 fade-in">
+          <span class="inline-block px-5 py-2 rounded-full text-sm font-semibold" style="background: rgb(255, 243, 224); color: rgb(249, 115, 22); font-weight: 600; font-size: 16px;">100+ Mbps Speeds</span>
+          <span class="inline-block px-5 py-2 rounded-full text-sm font-semibold" style="background: rgb(255, 243, 224); color: rgb(249, 115, 22); font-weight: 600; font-size: 16px;">99.9% Uptime</span>
+          <span class="inline-block px-5 py-2 rounded-full text-sm font-semibold" style="background: rgb(255, 243, 224); color: rgb(249, 115, 22); font-weight: 600; font-size: 16px;">500+ Clients</span>
+          <span class="inline-block px-5 py-2 rounded-full text-sm font-semibold" style="background: rgb(255, 243, 224); color: rgb(249, 115, 22); font-weight: 600; font-size: 16px;">24/7 Support</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capabilities -->
+    <section class="w-full py-20 px-6" style="background: rgb(255, 248, 240);">
+      <div class="max-w-7xl mx-auto space-y-20">
+        <div class="grid md:grid-cols-2 gap-12 items-center fade-in">
+          <div class="order-2 md:order-1">
+            <img class="w-full h-72 object-cover rounded-2xl shadow-md border-2 border-orange-100" loading="lazy" src="https://images.pexels.com/photos/4218546/pexels-photo-4218546.jpeg?auto=compress&cs=tinysrgb&w=800" alt="White router with three antennas and cables on bold yellow background">
+          </div>
+          <div class="order-1 md:order-2">
+            <h3 class="font-display mb-4" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 32px;">Blazing Fast WiFi</h3>
+            <p class="mb-5 leading-relaxed" style="color: rgb(102, 102, 102); font-size: 16px;">Transform your home or office connectivity with our professional WiFi installation. We assess your layout, identify dead zones, and deploy the right solution.</p>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2"><i data-lucide="check-circle" style="width:18px;height:18px;color:#F97316;flex-shrink:0;margin-top:3px"></i><span style="color: rgb(68, 68, 68); font-size: 15px;">Site survey and custom network planning</span></li>
+              <li class="flex items-start gap-2"><i data-lucide="check-circle" style="width:18px;height:18px;color:#F97316;flex-shrink:0;margin-top:3px"></i><span style="color: rgb(68, 68, 68); font-size: 15px;">Mesh network setup with zero dead zones</span></li>
+              <li class="flex items-start gap-2"><i data-lucide="check-circle" style="width:18px;height:18px;color:#F97316;flex-shrink:0;margin-top:3px"></i><span style="color: rgb(68, 68, 68); font-size: 15px;">Smart home integration and parental controls</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12 items-center fade-in">
+          <div>
+            <h3 class="font-display mb-4" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 32px;">Starlink Satellite Solutions</h3>
+            <p class="mb-5 leading-relaxed" style="color: rgb(102, 102, 102); font-size: 16px;">Powered by SpaceX's low-Earth orbit constellation, Starlink delivers high-speed internet to even the most remote locations in Ghana.</p>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2"><i data-lucide="check-circle" style="width:18px;height:18px;color:#F97316;flex-shrink:0;margin-top:3px"></i><span style="color: rgb(68, 68, 68); font-size: 15px;">Mini and Standard kits professionally installed</span></li>
+              <li class="flex items-start gap-2"><i data-lucide="check-circle" style="width:18px;height:18px;color:#F97316;flex-shrink:0;margin-top:3px"></i><span style="color: rgb(68, 68, 68); font-size: 15px;">Weatherproof mounting with surge protection</span></li>
+              <li class="flex items-start gap-2"><i data-lucide="check-circle" style="width:18px;height:18px;color:#F97316;flex-shrink:0;margin-top:3px"></i><span style="color: rgb(68, 68, 68); font-size: 15px;">Up to 200+ Mbps with low latency</span></li>
+            </ul>
+          </div>
+          <div>
+            <!-- TODO: replace with your image, e.g. "assets/starlink-roof.jpg" -->
+            <img class="w-full h-72 object-cover rounded-2xl shadow-md border-2 border-orange-100" loading="lazy" src="assets/starlink-roof.jpg" alt="Starlink satellite dish mounted on rooftop">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="w-full py-20 px-6" style="background: rgb(255, 251, 245);">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="font-display text-center mb-14 fade-in" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 40px;">What People Say About Leganet</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="card-hover bg-white rounded-2xl p-8 shadow-sm fade-in"><i data-lucide="quote" style="width:22px;height:22px;color:#F97316" class="mb-4"></i>
+            <p class="italic mb-6" style="color: rgb(85, 85, 85); font-size: 16px;">Leganet transformed our school's connectivity. Students now have reliable internet for research and online learning — it's been a game-changer for our entire campus.</p>
+            <p class="font-bold" style="color: rgb(26, 26, 46); font-weight: 600; font-size: 16px;">Kwame Asante</p>
+            <p style="color: rgb(156, 163, 175); font-size: 14px;">Head Teacher, Accra International School</p>
+          </div>
+          <div class="card-hover bg-white rounded-2xl p-8 shadow-sm fade-in"><i data-lucide="quote" style="width:22px;height:22px;color:#F97316" class="mb-4"></i>
+            <p class="italic mb-6" style="color: rgb(85, 85, 85); font-size: 16px;">The Starlink installation was seamless. Within 48 hours we went from zero internet to blazing-fast speeds at our warehouse. Highly recommend Leganet.</p>
+            <p class="font-bold" style="color: rgb(26, 26, 46); font-weight: 600; font-size: 16px;">Ama Mensah</p>
+            <p style="color: rgb(156, 163, 175); font-size: 14px;">Operations Manager, Tema Industrial Zone</p>
+          </div>
+          <div class="card-hover bg-white rounded-2xl p-8 shadow-sm fade-in"><i data-lucide="quote" style="width:22px;height:22px;color:#F97316" class="mb-4"></i>
+            <p class="italic mb-6" style="color: rgb(85, 85, 85); font-size: 16px;">Our hotel guests now enjoy seamless WiFi throughout every room and common area. Leganet's team was professional, fast, and incredibly knowledgeable.</p>
+            <p class="font-bold" style="color: rgb(26, 26, 46); font-weight: 600; font-size: 16px;">Yaw Boateng</p>
+            <p style="color: rgb(156, 163, 175); font-size: 14px;">General Manager, Golden Tulip Kumasi</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="w-full py-20 px-6" style="background: rgb(255, 248, 240);">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-display text-center mb-12 fade-in" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 36px;">Frequently Asked Questions</h2>
+        <div class="space-y-4 fade-in" id="faq-list">
+          <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+            <button class="faq-toggle w-full flex items-center justify-between px-6 py-5 text-left font-semibold" type="button">
+              <span style="color: rgb(26, 26, 46); font-weight: 600; font-size: 16px;">What is Starlink and how does it work?</span>
+              <i data-lucide="chevron-down" class="faq-chevron" style="width:20px;height:20px;color:#F97316;flex-shrink:0"></i>
+            </button>
+            <div class="faq-answer px-6"><p class="pb-5" style="color: rgb(102, 102, 102); font-size: 15px;">Starlink is a satellite internet service by SpaceX that uses a constellation of low-Earth orbit satellites to deliver high-speed, low-latency internet. Unlike traditional satellite internet, Starlink provides speeds of 100–200+ Mbps with latency as low as 20ms.</p></div>
+          </div>
+          <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+            <button class="faq-toggle w-full flex items-center justify-between px-6 py-5 text-left font-semibold" type="button">
+              <span style="color: rgb(26, 26, 46); font-weight: 600; font-size: 16px;">How long does installation take?</span>
+              <i data-lucide="chevron-down" class="faq-chevron" style="width:20px;height:20px;color:#F97316;flex-shrink:0"></i>
+            </button>
+            <div class="faq-answer px-6"><p class="pb-5" style="color: rgb(102, 102, 102); font-size: 15px;">Most Starlink and WiFi installations are completed within 24–48 hours of confirmation. Our team handles everything from site survey to final configuration and testing.</p></div>
+          </div>
+          <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+            <button class="faq-toggle w-full flex items-center justify-between px-6 py-5 text-left font-semibold" type="button">
+              <span style="color: rgb(26, 26, 46); font-weight: 600; font-size: 16px;">What areas in Ghana do you cover?</span>
+              <i data-lucide="chevron-down" class="faq-chevron" style="width:20px;height:20px;color:#F97316;flex-shrink:0"></i>
+            </button>
+            <div class="faq-answer px-6"><p class="pb-5" style="color: rgb(102, 102, 102); font-size: 15px;">We currently serve over 12 locations across Ghana including Accra, Kumasi, Tema, Cape Coast, Tamale, and surrounding areas. Starlink coverage extends nationwide thanks to satellite technology.</p></div>
+          </div>
+          <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+            <button class="faq-toggle w-full flex items-center justify-between px-6 py-5 text-left font-semibold" type="button">
+              <span style="color: rgb(26, 26, 46); font-weight: 600; font-size: 16px;">How much does installation cost?</span>
+              <i data-lucide="chevron-down" class="faq-chevron" style="width:20px;height:20px;color:#F97316;flex-shrink:0"></i>
+            </button>
+            <div class="faq-answer px-6"><p class="pb-5" style="color: rgb(102, 102, 102); font-size: 15px;">Pricing varies based on the service and equipment selected. Contact us for a free consultation and customized quote. We offer competitive rates for all our installation packages.</p></div>
+          </div>
+          <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+            <button class="faq-toggle w-full flex items-center justify-between px-6 py-5 text-left font-semibold" type="button">
+              <span style="color: rgb(26, 26, 46); font-weight: 600; font-size: 16px;">Do you provide ongoing support?</span>
+              <i data-lucide="chevron-down" class="faq-chevron" style="width:20px;height:20px;color:#F97316;flex-shrink:0"></i>
+            </button>
+            <div class="faq-answer px-6"><p class="pb-5" style="color: rgb(102, 102, 102); font-size: 15px;">Yes! We provide 24/7 technical support for all our clients. Our team is available via phone and email to troubleshoot any issues and ensure your connection stays reliable.</p></div>
+          </div>
+          <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+            <button class="faq-toggle w-full flex items-center justify-between px-6 py-5 text-left font-semibold" type="button">
+              <span style="color: rgb(26, 26, 46); font-weight: 600; font-size: 16px;">What equipment do I need?</span>
+              <i data-lucide="chevron-down" class="faq-chevron" style="width:20px;height:20px;color:#F97316;flex-shrink:0"></i>
+            </button>
+            <div class="faq-answer px-6"><p class="pb-5" style="color: rgb(102, 102, 102); font-size: 15px;">For Starlink, you'll need a Starlink kit (Mini or Standard) which we supply and install. For WiFi installations, we provide all necessary routers, access points, mesh systems, and cabling as part of our service.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="w-full py-24 px-6" style="background: linear-gradient(135deg, rgb(249, 115, 22), rgb(234, 88, 12));">
+      <div class="max-w-7xl mx-auto text-center fade-in">
+        <h2 class="font-display mb-4" style="color: rgb(255, 255, 255); font-weight: 600; font-size: 40px;">Ready to Get Connected?</h2>
+        <p class="mb-6 max-w-xl mx-auto" style="color: rgb(255, 255, 255); font-size: 18px;">Join hundreds of satisfied customers enjoying blazing-fast internet across Ghana. Call us today or send an enquiry.</p>
+        <div class="flex flex-wrap gap-4 justify-center mb-8">
+          <a href="tel:+233551131950" class="font-bold" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 22px;">055 113 1950</a>
+          <span class="text-white/50">|</span>
+          <a href="tel:+233208849998" class="font-bold" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 22px;">020 884 9998</a>
+        </div>
+        <a href="#contact" class="inline-block px-8 py-4 rounded-full font-semibold transition-transform hover:scale-105 border-2 border-white" style="background: transparent; color: rgb(255, 255, 255); font-weight: 700; font-size: 18px;">Contact Us Now</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== SERVICES ===== -->
+  <div data-page="services">
+    <div class="pt-24"></div>
+    <section class="w-full py-16 px-6" style="background: rgb(255, 251, 245);">
+      <div class="max-w-7xl mx-auto text-center fade-in">
+        <h1 class="font-display mb-4" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 48px;">Our Services</h1>
+        <p class="max-w-3xl mx-auto" style="color: rgb(102, 102, 102); font-size: 18px;">End-to-end internet solutions tailored for every need — from residential Starlink setups to enterprise-grade campus networks.</p>
+      </div>
+    </section>
+    <section class="w-full py-16 px-6" style="background: rgb(255, 248, 240);">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12 fade-in">
+          <h2 class="font-display mb-3" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 36px;">Starlink Satellite Internet</h2>
+          <p class="max-w-2xl mx-auto" style="color: rgb(102, 102, 102); font-size: 16px;">Powered by SpaceX's revolutionary low-Earth orbit satellite constellation, Starlink delivers high-speed internet to even the most remote locations in Ghana.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="card-hover rounded-2xl overflow-hidden bg-white shadow-sm fade-in">
+            <img class="w-full h-64 object-cover" loading="lazy" src="https://images.pexels.com/photos/2098428/pexels-photo-2098428.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Majestic view of the Milky Way above rugged mountain ranges under a starry sky">
+            <div class="p-8">
+              <h3 class="font-bold mb-3" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 24px;">Starlink Mini Kits</h3>
+              <p class="mb-4" style="color: rgb(102, 102, 102); font-size: 15px;">The Starlink Mini is a compact, portable satellite internet kit perfect for individuals, small homes, and on-the-go professionals. It offers download speeds of up to 100 Mbps with low latency, making it ideal for video calls, streaming, and remote work.</p>
+              <p style="color: rgb(249, 115, 22); font-size: 14px;">✦ Compact &amp; portable  ✦ Up to 100 Mbps  ✦ Easy relocation  ✦ Full setup included</p>
+            </div>
+          </div>
+          <div class="card-hover rounded-2xl overflow-hidden bg-white shadow-sm fade-in">
+            <img class="w-full h-64 object-cover" loading="lazy" src="https://images.pexels.com/photos/5504455/pexels-photo-5504455.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Multiple satellite dishes on orange rooftops under a clear blue sky">
+            <div class="p-8">
+              <h3 class="font-bold mb-3" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 24px;">Starlink Standard Kits</h3>
+              <p class="mb-4" style="color: rgb(102, 102, 102); font-size: 15px;">The Starlink Standard Kit is designed for larger homes, offices, and businesses that need maximum performance. With download speeds exceeding 200 Mbps and a wider field of view, the Standard dish provides more consistent connectivity.</p>
+              <p style="color: rgb(249, 115, 22); font-size: 14px;">✦ High-performance dish  ✦ 200+ Mbps speeds  ✦ Weatherproof mounting  ✦ Surge protection included</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="w-full py-16 px-6" style="background: rgb(255, 251, 245);">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12 fade-in">
+          <h2 class="font-display mb-3" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 36px;">Home &amp; Office WiFi Installation</h2>
+          <p class="max-w-2xl mx-auto" style="color: rgb(102, 102, 102); font-size: 16px;">Professional WiFi design and installation services that ensure every corner of your space has strong, reliable wireless coverage.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="card-hover rounded-2xl overflow-hidden bg-white shadow-sm fade-in">
+            <img class="w-full h-64 object-cover" loading="lazy" src="https://images.pexels.com/photos/4218546/pexels-photo-4218546.jpeg?auto=compress&cs=tinysrgb&w=800" alt="White router with three antennas and cables on bold yellow background">
+            <div class="p-8">
+              <h3 class="font-bold mb-3" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 24px;">Home WiFi Solutions</h3>
+              <p class="mb-4" style="color: rgb(102, 102, 102); font-size: 15px;">Transform your home connectivity with our professional WiFi installation service. We assess your home layout, identify dead zones, and deploy the right combination of routers and mesh extenders.</p>
+              <p style="color: rgb(249, 115, 22); font-size: 14px;">✦ Site survey &amp; planning  ✦ Mesh network setup  ✦ Smart home integration  ✦ Parental controls</p>
+            </div>
+          </div>
+          <div class="card-hover rounded-2xl overflow-hidden bg-white shadow-sm fade-in">
+            <img class="w-full h-64 object-cover" loading="lazy" src="https://images.pexels.com/photos/5354507/pexels-photo-5354507.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Closeup of electronic device with colorful wires in communications room">
+            <div class="p-8">
+              <h3 class="font-bold mb-3" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 24px;">Office &amp; Commercial WiFi</h3>
+              <p class="mb-4" style="color: rgb(102, 102, 102); font-size: 15px;">Enterprise-grade wireless infrastructure for offices, retail spaces, and commercial properties. We design and implement high-density WiFi networks that handle hundreds of simultaneous users.</p>
+              <p style="color: rgb(249, 115, 22); font-size: 14px;">✦ Enterprise access points  ✦ VLAN segmentation  ✦ Guest networks  ✦ Structured cabling</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="w-full py-16 px-6" style="background: rgb(255, 248, 240);">
+      <div class="max-w-7xl mx-auto">
+        <div class="card-hover rounded-2xl overflow-hidden bg-white shadow-sm fade-in md:flex">
+          <img class="w-full md:w-1/2 h-72 md:h-auto object-cover" loading="lazy" src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Diverse professionals unite for teamwork around a wooden table with laptops">
+          <div class="p-8 md:w-1/2 flex flex-col justify-center">
+            <h2 class="font-display mb-4" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 36px;">Community WiFi Hotspot Solutions</h2>
+            <p class="mb-4" style="color: rgb(102, 102, 102); font-size: 16px;">Leganet designs and deploys community WiFi hotspot systems that bring internet access to public spaces, markets, community centres, and residential estates. Our hotspot solutions include captive portal management, bandwidth throttling, user authentication, and usage analytics.</p>
+            <p style="color: rgb(249, 115, 22); font-size: 14px;">✦ Captive portal  ✦ Bandwidth management  ✦ User authentication  ✦ Usage analytics  ✦ Monetization options</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="w-full py-16 px-6 pb-24" style="background: rgb(255, 251, 245);">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12 fade-in">
+          <h2 class="font-display mb-3" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 36px;">Internet for Institutions</h2>
+          <p class="max-w-2xl mx-auto" style="color: rgb(102, 102, 102); font-size: 16px;">Specialised connectivity solutions for hotels, warehouses, schools, hospitals, and more — engineered for the unique demands of each industry.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="card-hover rounded-2xl overflow-hidden bg-white shadow-sm fade-in">
+            <img class="w-full h-48 object-cover" loading="lazy" src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Luxurious tropical resort with swimming pool and palms at dusk">
+            <div class="p-6"><h3 class="font-bold mb-2" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 20px;">Hotels &amp; Hospitality</h3><p style="color: rgb(102, 102, 102); font-size: 14px;">Guest WiFi, staff networks, and property-wide coverage that ensures every guest enjoys seamless connectivity.</p></div>
+          </div>
+          <div class="card-hover rounded-2xl overflow-hidden bg-white shadow-sm fade-in">
+            <img class="w-full h-48 object-cover" loading="lazy" src="https://images.pexels.com/photos/4481259/pexels-photo-4481259.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team working in an industrial warehouse discussing and organizing inventory">
+            <div class="p-6"><h3 class="font-bold mb-2" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 20px;">Warehouses &amp; Logistics</h3><p style="color: rgb(102, 102, 102); font-size: 14px;">Reliable industrial-grade internet for inventory management, IoT sensors, logistics tracking, and real-time communications.</p></div>
+          </div>
+          <div class="card-hover rounded-2xl overflow-hidden bg-white shadow-sm fade-in">
+            <img class="w-full h-48 object-cover" loading="lazy" src="https://images.pexels.com/photos/10638082/pexels-photo-10638082.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Children engaged in learning at a computer lab">
+            <div class="p-6"><h3 class="font-bold mb-2" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 20px;">Schools &amp; Education</h3><p style="color: rgb(102, 102, 102); font-size: 14px;">Campus-wide connectivity empowering students and educators with reliable, high-speed internet for research and e-learning.</p></div>
+          </div>
+          <div class="card-hover rounded-2xl overflow-hidden bg-white shadow-sm fade-in">
+            <img class="w-full h-48 object-cover" loading="lazy" src="https://images.pexels.com/photos/247786/pexels-photo-247786.jpeg?auto=compress&cs=tinysrgb&w=800" alt="View of Operating Room">
+            <div class="p-6"><h3 class="font-bold mb-2" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 20px;">Hospitals &amp; Healthcare</h3><p style="color: rgb(102, 102, 102); font-size: 14px;">Low-latency internet for telemedicine, electronic health records, diagnostic equipment, and critical hospital communications.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== PRODUCTS ===== -->
+  <div data-page="products">
+    <div class="pt-24"></div>
+    <section class="w-full py-16 px-6" style="background: rgb(255, 251, 245);">
+      <div class="max-w-7xl mx-auto text-center fade-in">
+        <h1 class="font-display mb-4" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 48px;">Products &amp; Equipment</h1>
+        <p class="max-w-3xl mx-auto" style="color: rgb(102, 102, 102); font-size: 18px;">We supply and install premium networking hardware from leading brands. Every product comes with professional installation and configuration.</p>
+      </div>
+    </section>
+    <section class="w-full py-8 px-6 pb-24">
+      <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="card-hover rounded-2xl overflow-hidden bg-white shadow-sm fade-in">
+          <img class="w-full h-56 object-cover" loading="lazy" src="https://images.pexels.com/photos/2098428/pexels-photo-2098428.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Majestic view of the Milky Way above rugged mountain ranges under a starry sky">
+          <div class="p-6"><h3 class="font-bold mb-2" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 20px;">Starlink Mini Kit</h3><p class="mb-4" style="color: rgb(102, 102, 102); font-size: 14px;">Compact satellite internet kit perfect for individuals and small households. Portable design with quick setup.</p><a href="#contact" class="inline-block px-6 py-2 rounded-full font-semibold transition-transform hover:scale-105" style="background: rgb(249, 115, 22); color: rgb(255, 255, 255); font-weight: 600; font-size: 14px;">Enquire Now</a></div>
+        </div>
+        <div class="card-hover rounded-2xl overflow-hidden bg-white shadow-sm fade-in">
+          <img class="w-full h-56 object-cover" loading="lazy" src="https://images.pexels.com/photos/5504455/pexels-photo-5504455.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Multiple satellite dishes on orange rooftops">
+          <div class="p-6"><h3 class="font-bold mb-2" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 20px;">Starlink Standard Kit</h3><p class="mb-4" style="color: rgb(102, 102, 102); font-size: 14px;">Full-size satellite dish with enhanced performance for homes, offices, and commercial installations.</p><a href="#contact" class="inline-block px-6 py-2 rounded-full font-semibold transition-transform hover:scale-105" style="background: rgb(249, 115, 22); color: rgb(255, 255, 255); font-weight: 600; font-size: 14px;">Enquire Now</a></div>
+        </div>
+        <div class="card-hover rounded-2xl overflow-hidden bg-white shadow-sm fade-in">
+          <img class="w-full h-56 object-cover" loading="lazy" src="https://images.pexels.com/photos/29711663/pexels-photo-29711663.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Sleek white wireless router with four antennas emitting soft blue and pink light">
+          <div class="p-6"><h3 class="font-bold mb-2" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 20px;">Ceiling-Mounted Access Points</h3><p class="mb-4" style="color: rgb(102, 102, 102); font-size: 14px;">Enterprise-grade WiFi access points for seamless indoor coverage in offices, hotels, and large spaces.</p><a href="#contact" class="inline-block px-6 py-2 rounded-full font-semibold transition-transform hover:scale-105" style="background: rgb(249, 115, 22); color: rgb(255, 255, 255); font-weight: 600; font-size: 14px;">Enquire Now</a></div>
+        </div>
+        <div class="card-hover rounded-2xl overflow-hidden bg-white shadow-sm fade-in">
+          <img class="w-full h-56 object-cover" loading="lazy" src="https://images.pexels.com/photos/4716292/pexels-photo-4716292.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Blue plastic wires with white tips connected to server">
+          <div class="p-6"><h3 class="font-bold mb-2" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 20px;">Network Switches</h3><p class="mb-4" style="color: rgb(102, 102, 102); font-size: 14px;">Managed and unmanaged switches for reliable wired connectivity in structured cabling installations.</p><a href="#contact" class="inline-block px-6 py-2 rounded-full font-semibold transition-transform hover:scale-105" style="background: rgb(249, 115, 22); color: rgb(255, 255, 255); font-weight: 600; font-size: 14px;">Enquire Now</a></div>
+        </div>
+        <div class="card-hover rounded-2xl overflow-hidden bg-white shadow-sm fade-in">
+          <img class="w-full h-56 object-cover" loading="lazy" src="https://images.pexels.com/photos/12271449/pexels-photo-12271449.jpeg?auto=compress&cs=tinysrgb&w=800" alt="A pair of satellite dishes on a rooftop capturing signals against an urban backdrop">
+          <div class="p-6"><h3 class="font-bold mb-2" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 20px;">Outdoor Wireless Bridges</h3><p class="mb-4" style="color: rgb(102, 102, 102); font-size: 14px;">Long-range point-to-point wireless bridges for connecting buildings and extending networks across distances.</p><a href="#contact" class="inline-block px-6 py-2 rounded-full font-semibold transition-transform hover:scale-105" style="background: rgb(249, 115, 22); color: rgb(255, 255, 255); font-weight: 600; font-size: 14px;">Enquire Now</a></div>
+        </div>
+        <div class="card-hover rounded-2xl overflow-hidden bg-white shadow-sm fade-in">
+          <img class="w-full h-56 object-cover" loading="lazy" src="https://images.pexels.com/photos/4218546/pexels-photo-4218546.jpeg?auto=compress&cs=tinysrgb&w=800" alt="White router with three antennas and cables on bold yellow background">
+          <div class="p-6"><h3 class="font-bold mb-2" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 20px;">Mesh Router Systems</h3><p class="mb-4" style="color: rgb(102, 102, 102); font-size: 14px;">Whole-home and whole-office mesh WiFi systems that eliminate dead zones with seamless roaming.</p><a href="#contact" class="inline-block px-6 py-2 rounded-full font-semibold transition-transform hover:scale-105" style="background: rgb(249, 115, 22); color: rgb(255, 255, 255); font-weight: 600; font-size: 14px;">Enquire Now</a></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== ABOUT ===== -->
+  <div data-page="about">
+    <div class="pt-24"></div>
+    <section class="w-full py-16 px-6" style="background: rgb(255, 251, 245);">
+      <div class="max-w-7xl mx-auto text-center fade-in">
+        <h1 class="font-display mb-4" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 48px;">About Leganet</h1>
+        <p class="max-w-3xl mx-auto" style="color: rgb(102, 102, 102); font-size: 18px;">Founded in Accra, Leganet is on a mission to bridge the digital divide across Ghana through cutting-edge satellite technology and local expertise.</p>
+      </div>
+    </section>
+    <section class="w-full py-16 px-6" style="background: rgb(255, 248, 240);">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div class="fade-in">
+          <!-- TODO: replace with your image, e.g. "assets/technician.jpg" -->
+          <img class="w-full h-96 object-cover rounded-2xl shadow-md" loading="lazy" src="assets/technician.jpg" alt="Professional technician in safety vest and hard hat smiling confidently">
+        </div>
+        <div class="fade-in">
+          <h2 class="font-display mb-6" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 36px;">Our Story</h2>
+          <p class="mb-4 leading-relaxed" style="color: rgb(102, 102, 102); font-size: 16px;">Leganet Internet Solutions was born from a simple observation: millions of Ghanaians lack access to reliable, high-speed internet. What started as a small Starlink installation service in Accra has grown into a comprehensive internet solutions provider.</p>
+          <p class="mb-4 leading-relaxed" style="color: rgb(102, 102, 102); font-size: 16px;">Our team of certified technicians combines deep local knowledge with cutting-edge technology. We understand the unique challenges of connectivity in Ghana — from power fluctuations to tropical weather.</p>
+          <p class="leading-relaxed" style="color: rgb(102, 102, 102); font-size: 16px;">Today, Leganet serves over 500 clients across 12+ locations, from bustling Accra neighbourhoods to remote northern communities. We're proud to be at the forefront of Ghana's digital transformation.</p>
+        </div>
+      </div>
+    </section>
+    <section class="w-full py-16 px-6" style="background: rgb(255, 251, 245);">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
+        <div class="card-hover bg-white rounded-2xl p-10 shadow-sm fade-in">
+          <div class="w-14 h-14 mb-6 bg-orange-100 rounded-full flex items-center justify-center"><i data-lucide="target" style="width:28px;height:28px;color:#F97316"></i></div>
+          <h3 class="font-display mb-4" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 28px;">Our Mission</h3>
+          <p class="leading-relaxed" style="color: rgb(102, 102, 102); font-size: 16px;">To provide every Ghanaian home, business, and institution with access to fast, reliable, and affordable internet connectivity — bridging the digital divide and empowering communities through technology.</p>
+        </div>
+        <div class="card-hover bg-white rounded-2xl p-10 shadow-sm fade-in">
+          <div class="w-14 h-14 mb-6 bg-orange-100 rounded-full flex items-center justify-center"><i data-lucide="eye" style="width:28px;height:28px;color:#F97316"></i></div>
+          <h3 class="font-display mb-4" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 28px;">Our Vision</h3>
+          <p class="leading-relaxed" style="color: rgb(102, 102, 102); font-size: 16px;">To become West Africa's leading internet solutions provider, recognised for innovation, reliability, and our commitment to connecting underserved communities to the global digital economy.</p>
+        </div>
+      </div>
+    </section>
+    <section class="w-full py-16 px-6 pb-24" style="background: rgb(255, 248, 240);">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="font-display text-center mb-12 fade-in" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 36px;">Our Values</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="card-hover bg-white rounded-2xl p-8 text-center shadow-sm fade-in">
+            <div class="w-14 h-14 mx-auto mb-4 bg-orange-100 rounded-full flex items-center justify-center"><i data-lucide="shield" style="width:28px;height:28px;color:#F97316"></i></div>
+            <h3 class="font-bold mb-2" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 20px;">Reliability</h3>
+            <p style="color: rgb(102, 102, 102); font-size: 15px;">We build infrastructure that works 24/7. Our installations are engineered for maximum uptime and long-term durability.</p>
+          </div>
+          <div class="card-hover bg-white rounded-2xl p-8 text-center shadow-sm fade-in">
+            <div class="w-14 h-14 mx-auto mb-4 bg-orange-100 rounded-full flex items-center justify-center"><i data-lucide="lightbulb" style="width:28px;height:28px;color:#F97316"></i></div>
+            <h3 class="font-bold mb-2" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 20px;">Innovation</h3>
+            <p style="color: rgb(102, 102, 102); font-size: 15px;">We stay at the cutting edge, deploying the latest satellite and networking technologies to deliver superior performance.</p>
+          </div>
+          <div class="card-hover bg-white rounded-2xl p-8 text-center shadow-sm fade-in">
+            <div class="w-14 h-14 mx-auto mb-4 bg-orange-100 rounded-full flex items-center justify-center"><i data-lucide="users" style="width:28px;height:28px;color:#F97316"></i></div>
+            <h3 class="font-bold mb-2" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 20px;">Community</h3>
+            <p style="color: rgb(102, 102, 102); font-size: 15px;">We're committed to connecting underserved areas and making internet access a reality for all Ghanaians.</p>
+          </div>
+          <div class="card-hover bg-white rounded-2xl p-8 text-center shadow-sm fade-in">
+            <div class="w-14 h-14 mx-auto mb-4 bg-orange-100 rounded-full flex items-center justify-center"><i data-lucide="award" style="width:28px;height:28px;color:#F97316"></i></div>
+            <h3 class="font-bold mb-2" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 20px;">Excellence</h3>
+            <p style="color: rgb(102, 102, 102); font-size: 15px;">From consultation to installation and support, we deliver professional service that exceeds expectations every time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== CONTACT ===== -->
+  <div data-page="contact">
+    <div class="pt-24"></div>
+    <section class="w-full py-16 px-6" style="background: rgb(255, 251, 245);">
+      <div class="max-w-7xl mx-auto text-center fade-in">
+        <h1 class="font-display mb-4" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 48px;">Get In Touch</h1>
+        <p class="max-w-3xl mx-auto" style="color: rgb(102, 102, 102); font-size: 18px;">Ready to get connected? Reach out to us via phone, email, or the contact form below. Our team responds within 24 hours.</p>
+      </div>
+    </section>
+    <section class="w-full py-8 px-6" style="background: rgb(255, 248, 240);">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+        <div class="card-hover bg-white rounded-2xl p-8 text-center shadow-sm fade-in">
+          <i data-lucide="phone" style="width:32px;height:32px;color:#F97316" class="mx-auto mb-4"></i>
+          <p class="mb-2" style="color: rgb(156, 163, 175); font-size: 14px;">Phone</p>
+          <p class="font-semibold" style="color: rgb(26, 26, 46); font-weight: 600; font-size: 18px;">055 113 1950</p>
+          <p class="font-semibold" style="color: rgb(26, 26, 46); font-weight: 600; font-size: 18px;">020 884 9998</p>
+        </div>
+        <div class="card-hover bg-white rounded-2xl p-8 text-center shadow-sm fade-in">
+          <i data-lucide="mail" style="width:32px;height:32px;color:#F97316" class="mx-auto mb-4"></i>
+          <p class="mb-2" style="color: rgb(156, 163, 175); font-size: 14px;">Email</p>
+          <p class="font-semibold" style="color: rgb(26, 26, 46); font-weight: 600; font-size: 18px;">info@leganet.com</p>
+        </div>
+        <div class="card-hover bg-white rounded-2xl p-8 text-center shadow-sm fade-in">
+          <i data-lucide="map-pin" style="width:32px;height:32px;color:#F97316" class="mx-auto mb-4"></i>
+          <p class="mb-2" style="color: rgb(156, 163, 175); font-size: 14px;">Location</p>
+          <p class="font-semibold" style="color: rgb(26, 26, 46); font-weight: 600; font-size: 18px;">Esiama, Ghana</p>
+        </div>
+      </div>
+    </section>
+    <section class="w-full py-16 px-6" style="background: rgb(255, 251, 245);">
+      <div class="max-w-3xl mx-auto bg-white rounded-2xl p-10 shadow-sm fade-in">
+        <h2 class="font-display text-center mb-8" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 32px;">Send Us a Message</h2>
+        <form id="contact-form" class="space-y-6">
+          <div>
+            <label for="form-name" class="block mb-2 font-medium" style="color: rgb(68, 68, 68); font-weight: 500; font-size: 16px;">Full Name</label>
+            <input id="form-name" type="text" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
+          </div>
+          <div>
+            <label for="form-email" class="block mb-2 font-medium" style="color: rgb(68, 68, 68); font-weight: 500; font-size: 16px;">Email Address</label>
+            <input id="form-email" type="email" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
+          </div>
+          <div>
+            <label for="form-phone" class="block mb-2 font-medium" style="color: rgb(68, 68, 68); font-weight: 500; font-size: 16px;">Phone Number</label>
+            <input id="form-phone" type="tel" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
+          </div>
+          <div>
+            <label for="form-service" class="block mb-2 font-medium" style="color: rgb(68, 68, 68); font-weight: 500; font-size: 16px;">Service of Interest</label>
+            <select id="form-service" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
+              <option value="">Select a service</option>
+              <option>Starlink Mini Kit</option>
+              <option>Starlink Standard Kit</option>
+              <option>Home WiFi Installation</option>
+              <option>Office WiFi Installation</option>
+              <option>Community WiFi Hotspot</option>
+              <option>Institutional Internet Setup</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="form-message" class="block mb-2 font-medium" style="color: rgb(68, 68, 68); font-weight: 500; font-size: 16px;">Your Message</label>
+            <textarea id="form-message" rows="4" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"></textarea>
+          </div>
+          <button type="submit" class="w-full py-4 rounded-full font-semibold transition-transform hover:scale-[1.02]" style="background: rgb(249, 115, 22); color: rgb(255, 255, 255); font-weight: 700; font-size: 18px;">Send Message</button>
+        </form>
+        <div id="form-success" class="hidden text-center py-12">
+          <i data-lucide="check-circle" style="width:64px;height:64px;color:#F97316" class="mx-auto mb-4"></i>
+          <p class="font-bold text-xl" style="color: rgb(249, 115, 22); font-size: 20px;">Thank you! Your message has been sent. We'll get back to you shortly.</p>
+        </div>
+      </div>
+    </section>
+    <section class="w-full py-16 px-6 pb-24" style="background: rgb(255, 248, 240);">
+      <div class="max-w-md mx-auto bg-white rounded-2xl p-10 text-center shadow-sm fade-in">
+        <i data-lucide="clock" style="width:32px;height:32px;color:#F97316" class="mx-auto mb-4"></i>
+        <h3 class="font-display mb-4" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 24px;">Business Hours</h3>
+        <p class="mb-2" style="color: rgb(102, 102, 102); font-size: 16px;">Monday – Friday: 8:00 AM – 6:00 PM</p>
+        <p style="color: rgb(102, 102, 102); font-size: 16px;">Saturday: 9:00 AM – 3:00 PM  |  Sunday: Closed</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="w-full py-10 px-6 border-t border-gray-200" style="background: rgb(255, 248, 240);">
+    <div class="max-w-7xl mx-auto text-center">
+      <p class="font-display mb-2" style="font-weight: 700; font-size: 24px;">Leganet</p>
+      <p class="mb-4" style="color: rgb(102, 102, 102); font-size: 14px;">Enjoy fast • Reliable • Unlimited internet.</p>
+      <div class="flex gap-4 justify-center mb-4">
+        <a href="tel:+233551131950" style="color: rgb(249, 115, 22); font-weight: 600; font-size: 16px;">055 113 1950</a>
+        <span class="text-gray-300">|</span>
+        <a href="tel:+233208849998" style="color: rgb(249, 115, 22); font-weight: 600; font-size: 16px;">020 884 9998</a>
+      </div>
+      <p style="color: rgb(156, 163, 175); font-size: 13px;">© 2026 Leganet Internet Solutions. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    function navigate() {
+      const hash = window.location.hash.replace('#','') || 'home';
+      document.querySelectorAll('[data-page]').forEach(p => p.classList.remove('active-page'));
+      const target = document.querySelector(`[data-page="${hash}"]`);
+      if (target) { target.classList.add('active-page'); window.scrollTo(0,0); }
+      else { document.querySelector('[data-page="home"]').classList.add('active-page'); }
+      document.querySelectorAll('[data-nav]').forEach(a => {
+        a.classList.toggle('nav-active', a.dataset.nav === hash);
+      });
+    }
+    window.addEventListener('hashchange', navigate);
+    navigate();
+
+    document.getElementById('menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+    document.getElementById('mobile-menu').querySelectorAll('a').forEach(a => a.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden')));
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('nav-solid', window.scrollY > 50);
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => { e.preventDefault(); window.location.hash = a.getAttribute('href'); });
+    });
+
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const answer = btn.nextElementSibling;
+        const chevron = btn.querySelector('.faq-chevron');
+        const wasOpen = answer.classList.contains('open');
+        document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+        document.querySelectorAll('.faq-chevron').forEach(c => c.classList.remove('open'));
+        if (!wasOpen) {
+          answer.classList.add('open');
+          chevron.classList.add('open');
+        }
+      });
+    });
+
+    // Contact form
+    const form = document.getElementById('contact-form');
+    const formSuccess = document.getElementById('form-success');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      form.classList.add('hidden');
+      formSuccess.classList.remove('hidden');
+      lucide.createIcons();
+      setTimeout(() => { form.reset(); form.classList.remove('hidden'); formSuccess.classList.add('hidden'); }, 3000);
+    });
+  </script>
+</body>
+</html>
