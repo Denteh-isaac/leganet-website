@@ -9,9 +9,9 @@ Standalone HTML/CSS/JS export of the Leganet website, cleaned up from the Canva-
 - Removed `data-template-id` attributes — these were only used by Canva's editor to track elements; harmless either way, but not needed here.
 - Replaced 4 private `canva://...` image references with local placeholder paths in an `assets/` folder (see below). Everything else (Pexels stock photos, fonts, icons, layout, JS behavior) works as-is.
 
-## Before this goes live, you need to supply 4 images
+## Before this goes live, replace the 4 placeholder images
 
-These were originally private Canva-hosted assets and won't load outside Canva. Save your own copies into an `assets/` folder next to `index.html`:
+The `assets/` folder ships with **temporary orange/navy placeholder images** so the site renders out of the box. These were originally private Canva-hosted assets and won't load outside Canva. Replace them with your own copies (same filenames) in the `assets/` folder next to `index.html`:
 
 | File expected | Used for |
 |---|---|
