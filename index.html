@@ -24,6 +24,11 @@
     .faq-chevron { transition: transform 0.3s; }
     .faq-chevron.open { transform: rotate(180deg); }
     .blob-shape { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    .marquee { overflow: hidden; width: 100%; -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); }
+    .marquee-track { display: inline-flex; width: max-content; animation: marquee-scroll 32s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee-track span { padding: 0 1.75rem; white-space: nowrap; }
+    @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   </style>
 </head>
 <body class="w-full min-h-screen" style="background: rgb(255, 251, 245);">
@@ -78,15 +83,22 @@
     </header>
 
     <!-- Brands -->
-    <section class="w-full py-12 px-6" style="background: rgb(248, 244, 238);">
-      <div class="max-w-7xl mx-auto text-center">
+    <section class="w-full py-10" style="background: rgb(248, 244, 238);">
+      <div class="max-w-7xl mx-auto text-center px-6">
         <p class="text-sm uppercase tracking-widest mb-8" style="color: rgb(156, 163, 175); font-size: 12px;">TRUSTED BY BUSINESSES ACROSS GHANA</p>
-        <div class="flex flex-wrap justify-center gap-8 md:gap-14">
+      </div>
+      <div class="marquee">
+        <div class="marquee-track">
           <span class="font-medium text-lg opacity-40" style="color: rgb(26, 26, 46); font-size: 18px;">Miro Forestry &amp; Timber Products</span>
           <span class="font-medium text-lg opacity-40" style="color: rgb(26, 26, 46); font-size: 18px;">University of Mines and Technology</span>
           <span class="font-medium text-lg opacity-40" style="color: rgb(26, 26, 46); font-size: 18px;">University of Cape Coast</span>
           <span class="font-medium text-lg opacity-40" style="color: rgb(26, 26, 46); font-size: 18px;">Ankobra Bridge Hotel Resort</span>
           <span class="font-medium text-lg opacity-40" style="color: rgb(26, 26, 46); font-size: 18px;">Lighthouse International</span>
+          <span class="font-medium text-lg opacity-40" style="color: rgb(26, 26, 46); font-size: 18px;" aria-hidden="true">Miro Forestry &amp; Timber Products</span>
+          <span class="font-medium text-lg opacity-40" style="color: rgb(26, 26, 46); font-size: 18px;" aria-hidden="true">University of Mines and Technology</span>
+          <span class="font-medium text-lg opacity-40" style="color: rgb(26, 26, 46); font-size: 18px;" aria-hidden="true">University of Cape Coast</span>
+          <span class="font-medium text-lg opacity-40" style="color: rgb(26, 26, 46); font-size: 18px;" aria-hidden="true">Ankobra Bridge Hotel Resort</span>
+          <span class="font-medium text-lg opacity-40" style="color: rgb(26, 26, 46); font-size: 18px;" aria-hidden="true">Lighthouse International</span>
         </div>
       </div>
     </section>
@@ -491,7 +503,7 @@
         <div class="card-hover bg-white rounded-2xl p-8 text-center shadow-sm fade-in">
           <i data-lucide="mail" style="width:32px;height:32px;color:#F97316" class="mx-auto mb-4"></i>
           <p class="mb-2" style="color: rgb(156, 163, 175); font-size: 14px;">Email</p>
-          <a href="mailto:leganetgh@gmail.com" class="font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 18px;">leganetgh@gmail.com</a>
+          <a href="mailto:leganetghsupport@gmail.com" class="font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 18px;">leganetghsupport@gmail.com</a>
         </div>
         <div class="card-hover bg-white rounded-2xl p-8 text-center shadow-sm fade-in">
           <i data-lucide="map-pin" style="width:32px;height:32px;color:#F97316" class="mx-auto mb-4"></i>
