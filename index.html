@@ -30,32 +30,42 @@
     .marquee:hover .marquee-track { animation-play-state: paused; }
     .marquee-track span { padding: 0 1.75rem; white-space: nowrap; }
     @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .step-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .step-body.open { max-height: 700px; }
+    .step-chevron { transition: transform 0.3s; }
+    .step-chevron.open { transform: rotate(180deg); }
+    .step-num { width: 34px; height: 34px; border-radius: 9999px; display: flex; align-items: center; justify-content: center; font-size: 15px; background: #E5E7EB; color: #9CA3AF; flex-shrink: 0; transition: background 0.3s, color 0.3s; }
+    .step-num.active, .step-num.done { background: #0284C7; color: #fff; }
+    .time-slot { border: 1px solid #E5E7EB; border-radius: 12px; padding: 10px 8px; font-size: 14px; color: #374151; cursor: pointer; transition: all 0.2s; text-align: center; }
+    .time-slot:hover { border-color: #0284C7; }
+    .time-slot.slot-active { background: #0284C7; border-color: #0284C7; color: #fff; }
   </style>
 </head>
 <body class="w-full min-h-screen" style="background: rgb(247, 251, 255);">
 
   <!-- Navigation -->
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="#home" class="flex items-center">
-        <img class="h-14 w-auto object-contain" src="assets/logo.png" alt="Leganet logo">
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-4 pt-3">
+    <div class="relative max-w-7xl mx-auto bg-white rounded-2xl shadow-lg flex items-center justify-between px-6 py-3">
+      <a href="#home" class="flex items-center flex-shrink-0">
+        <img class="h-11 w-auto object-contain" src="assets/logo.png" alt="Leganet logo">
       </a>
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#home" data-nav="home" class="text-sm font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-size: 16px;">Home</a>
-        <a href="#services" data-nav="services" class="text-sm font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-size: 16px;">Services</a>
-        <a href="#products" data-nav="products" class="text-sm font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-size: 16px;">Products</a>
-        <a href="#about" data-nav="about" class="text-sm font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-size: 16px;">About</a>
-        <a href="#contact" data-nav="contact" class="text-sm font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-size: 16px;">Contact</a>
-        <a href="#contact" class="px-5 py-2.5 rounded-full text-sm font-medium transition-transform hover:scale-105" style="background: linear-gradient(135deg, #0284C7, #1D4ED8); color: rgb(255, 255, 255); font-weight: 500; font-size: 16px;">Get Started</a>
+      <div class="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+        <a href="#home" data-nav="home" class="font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-size: 16px;">Home</a>
+        <a href="#services" data-nav="services" class="font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-size: 16px;">Services</a>
+        <a href="#products" data-nav="products" class="font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-size: 16px;">Products</a>
+        <a href="#about" data-nav="about" class="font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-size: 16px;">About</a>
+        <a href="#contact" data-nav="contact" class="font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-size: 16px;">Contact</a>
       </div>
+      <a href="#book" class="hidden md:inline-block flex-shrink-0 px-5 py-2.5 rounded-full font-medium border-2 transition-all hover:bg-blue-50" style="border-color: #0284C7; color: #0284C7; font-size: 15px;">Book a Consultation</a>
       <button id="menu-btn" class="md:hidden text-gray-800" aria-label="Menu"><i data-lucide="menu" style="width:26px;height:26px"></i></button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur px-6 pb-4 shadow-lg">
+    <div id="mobile-menu" class="hidden md:hidden mt-2 rounded-2xl bg-white px-6 py-3 shadow-lg">
       <a href="#home" class="block py-2.5 text-gray-700 hover:text-orange-500 font-medium">Home</a>
       <a href="#services" class="block py-2.5 text-gray-700 hover:text-orange-500 font-medium">Services</a>
       <a href="#products" class="block py-2.5 text-gray-700 hover:text-orange-500 font-medium">Products</a>
       <a href="#about" class="block py-2.5 text-gray-700 hover:text-orange-500 font-medium">About</a>
       <a href="#contact" class="block py-2.5 text-gray-700 hover:text-orange-500 font-medium">Contact</a>
+      <a href="#book" class="block py-2.5 font-medium" style="color: #0284C7;">Book a Consultation</a>
     </div>
   </nav>
 
@@ -238,7 +248,7 @@
         <span class="inline-block px-4 py-1.5 rounded-full text-sm font-medium mb-5" style="background: rgb(224, 242, 254); color: rgb(2, 132, 199); font-weight: 500; font-size: 15px;">100% Free — No Obligation</span>
         <h2 class="font-display mb-4" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 40px;">Book a Free Consultation</h2>
         <p class="mb-8 max-w-2xl mx-auto leading-relaxed" style="color: rgb(102, 102, 102); font-size: 18px;">Not sure which solution fits your home, office, or institution? Talk to our team for free. We'll assess your needs, recommend the right setup, and give you a no-obligation quote.</p>
-        <a href="#contact" class="inline-block px-9 py-4 rounded-full font-medium transition-transform hover:scale-105 shadow-lg" style="background: linear-gradient(135deg, #0284C7, #1D4ED8); color: rgb(255, 255, 255); font-weight: 500; font-size: 18px;">Book Us Now</a>
+        <a href="#book" class="inline-block px-9 py-4 rounded-full font-medium transition-transform hover:scale-105 shadow-lg" style="background: linear-gradient(135deg, #0284C7, #1D4ED8); color: rgb(255, 255, 255); font-weight: 500; font-size: 18px;">Book Us Now</a>
       </div>
     </section>
 
@@ -562,6 +572,121 @@
     </section>
   </div>
 
+  <!-- ===== BOOK A CONSULTATION ===== -->
+  <div data-page="book">
+    <div class="pt-28"></div>
+    <section class="w-full py-16 px-6 pb-24" style="background: rgb(247, 251, 255);">
+      <div class="max-w-7xl mx-auto">
+        <div class="fade-in mb-10">
+          <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full font-medium mb-5" style="background: rgb(224, 242, 254); color: #0284C7; font-size: 14px;">
+            <span style="width:8px;height:8px;border-radius:9999px;background:#0284C7;display:inline-block;"></span> Free Consultation
+          </span>
+          <h1 class="mb-4" style="color: rgb(26, 26, 46); font-weight: 500; font-size: 44px; line-height: 1.1;">Your free home consultation</h1>
+          <p class="max-w-2xl leading-relaxed" style="color: rgb(102, 102, 102); font-size: 18px;">Complete each step to schedule a free, no-obligation consultation. Our team will assess your space and recommend the right internet solution — delivered directly to your home or business.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8 items-start">
+          <!-- Stepper -->
+          <div class="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8 fade-in">
+            <form id="booking-form">
+              <div id="booking-form-inner">
+                <!-- Step 1 -->
+                <div class="booking-step border-b border-gray-100">
+                  <button type="button" class="step-header w-full flex items-center justify-between py-4" data-step="1">
+                    <span class="flex items-center gap-3"><span class="step-num active">1</span><span class="font-medium" style="color: rgb(26, 26, 46); font-size: 18px;">Personal Details</span></span>
+                    <i data-lucide="chevron-down" class="step-chevron open" style="width:20px;height:20px;color:#0284C7"></i>
+                  </button>
+                  <div class="step-body open">
+                    <div class="grid sm:grid-cols-2 gap-4 pb-4 pt-1">
+                      <input type="text" placeholder="Full Name" class="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
+                      <input type="tel" placeholder="Phone Number" class="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
+                      <input type="email" placeholder="Email Address" class="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
+                      <select class="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-500 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
+                        <option value="">Service of Interest</option>
+                        <option>Starlink Installation</option>
+                        <option>Home &amp; Office WiFi</option>
+                        <option>Community Hotspot Business</option>
+                        <option>Networking</option>
+                        <option>Web &amp; Graphic Design</option>
+                        <option>Other</option>
+                      </select>
+                    </div>
+                    <button type="button" data-next="2" class="px-7 py-3 rounded-full font-medium transition-transform hover:scale-105" style="background: linear-gradient(135deg, #0284C7, #1D4ED8); color:#fff; font-size:15px;">Continue</button>
+                  </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="booking-step border-b border-gray-100">
+                  <button type="button" class="step-header w-full flex items-center justify-between py-4" data-step="2">
+                    <span class="flex items-center gap-3"><span class="step-num">2</span><span class="font-medium" style="color: rgb(26, 26, 46); font-size: 18px;">Choose Date</span></span>
+                    <i data-lucide="chevron-down" class="step-chevron" style="width:20px;height:20px;color:#0284C7"></i>
+                  </button>
+                  <div class="step-body">
+                    <div class="pb-4 pt-1">
+                      <input type="date" class="w-full sm:w-auto bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
+                    </div>
+                    <button type="button" data-next="3" class="px-7 py-3 rounded-full font-medium transition-transform hover:scale-105" style="background: linear-gradient(135deg, #0284C7, #1D4ED8); color:#fff; font-size:15px;">Continue</button>
+                  </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="booking-step border-b border-gray-100">
+                  <button type="button" class="step-header w-full flex items-center justify-between py-4" data-step="3">
+                    <span class="flex items-center gap-3"><span class="step-num">3</span><span class="font-medium" style="color: rgb(26, 26, 46); font-size: 18px;">Choose Time</span></span>
+                    <i data-lucide="chevron-down" class="step-chevron" style="width:20px;height:20px;color:#0284C7"></i>
+                  </button>
+                  <div class="step-body">
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pb-4 pt-1">
+                      <div class="time-slot">8:00 – 10:00</div>
+                      <div class="time-slot">10:00 – 12:00</div>
+                      <div class="time-slot">1:00 – 3:00</div>
+                      <div class="time-slot">3:00 – 5:00</div>
+                    </div>
+                    <button type="button" data-next="4" class="px-7 py-3 rounded-full font-medium transition-transform hover:scale-105" style="background: linear-gradient(135deg, #0284C7, #1D4ED8); color:#fff; font-size:15px;">Continue</button>
+                  </div>
+                </div>
+                <!-- Step 4 -->
+                <div class="booking-step">
+                  <button type="button" class="step-header w-full flex items-center justify-between py-4" data-step="4">
+                    <span class="flex items-center gap-3"><span class="step-num">4</span><span class="font-medium" style="color: rgb(26, 26, 46); font-size: 18px;">Additional Message</span></span>
+                    <i data-lucide="chevron-down" class="step-chevron" style="width:20px;height:20px;color:#0284C7"></i>
+                  </button>
+                  <div class="step-body">
+                    <div class="pb-4 pt-1">
+                      <textarea rows="4" placeholder="Anything else we should know? (optional)" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"></textarea>
+                    </div>
+                    <button type="submit" class="px-8 py-3.5 rounded-full font-medium transition-transform hover:scale-105" style="background: linear-gradient(135deg, #0284C7, #1D4ED8); color:#fff; font-size:16px;">Confirm Booking</button>
+                  </div>
+                </div>
+              </div>
+              <div id="booking-success" class="hidden text-center py-12">
+                <i data-lucide="check-circle" style="width:64px;height:64px;color:#0284C7" class="mx-auto mb-4"></i>
+                <p class="font-medium text-xl mb-1" style="color: rgb(2, 132, 199); font-size: 22px;">Your consultation is booked!</p>
+                <p style="color: rgb(102, 102, 102); font-size: 15px;">Thank you — our team will confirm your appointment by phone or email shortly.</p>
+              </div>
+            </form>
+          </div>
+
+          <!-- Info card -->
+          <div class="rounded-2xl p-8 text-white shadow-lg fade-in" style="background: linear-gradient(160deg, #0EA5E9, #1E3A8A);">
+            <h3 class="font-medium mb-3" style="font-size: 24px;">Book Your Free Home Consultation</h3>
+            <p class="mb-7" style="opacity: 0.9; font-size: 15px; line-height: 1.6;">Fast, reliable internet guidance and a free site survey — delivered directly to your home or business.</p>
+            <ul class="space-y-4 mb-7">
+              <li class="flex items-center gap-3"><span style="width:38px;height:38px;border-radius:9999px;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i data-lucide="shield-check" style="width:20px;height:20px;color:#fff"></i></span><span style="font-size:15px;">100% Free &amp; No Obligation</span></li>
+              <li class="flex items-center gap-3"><span style="width:38px;height:38px;border-radius:9999px;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i data-lucide="wrench" style="width:20px;height:20px;color:#fff"></i></span><span style="font-size:15px;">Professional Installation Team</span></li>
+              <li class="flex items-center gap-3"><span style="width:38px;height:38px;border-radius:9999px;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i data-lucide="clock" style="width:20px;height:20px;color:#fff"></i></span><span style="font-size:15px;">Flexible Appointment Times</span></li>
+            </ul>
+            <div class="pt-6 flex items-center gap-3" style="border-top:1px solid rgba(255,255,255,0.2);">
+              <span style="width:40px;height:40px;border-radius:9999px;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:600;">L</span>
+              <div>
+                <p class="font-medium" style="font-size:15px;">Trusted across Ghana</p>
+                <p style="opacity:0.8; font-size:13px;">Fast · Reliable · Unlimited internet</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
   <!-- Footer -->
   <footer class="w-full py-10 px-6 border-t border-gray-200" style="background: rgb(239, 246, 255);">
     <div class="max-w-7xl mx-auto text-center">
@@ -594,10 +719,6 @@
 
     document.getElementById('menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
     document.getElementById('mobile-menu').querySelectorAll('a').forEach(a => a.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden')));
-
-    window.addEventListener('scroll', () => {
-      document.getElementById('navbar').classList.toggle('nav-solid', window.scrollY > 50);
-    });
 
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => { e.preventDefault(); window.location.hash = a.getAttribute('href'); });
@@ -633,6 +754,44 @@
       lucide.createIcons();
       setTimeout(() => { form.reset(); form.classList.remove('hidden'); formSuccess.classList.add('hidden'); }, 3000);
     });
+
+    // Booking stepper
+    (function(){
+      const steps = document.querySelectorAll('.booking-step');
+      function openStep(n){
+        steps.forEach(s => {
+          const header = s.querySelector('.step-header');
+          const body = s.querySelector('.step-body');
+          const chev = s.querySelector('.step-chevron');
+          const num = s.querySelector('.step-num');
+          if (header.dataset.step === String(n)) {
+            body.classList.add('open'); chev.classList.add('open'); num.classList.add('active');
+          } else {
+            body.classList.remove('open'); chev.classList.remove('open');
+          }
+        });
+      }
+      document.querySelectorAll('.step-header').forEach(h => h.addEventListener('click', () => {
+        const body = h.parentElement.querySelector('.step-body');
+        if (body.classList.contains('open')) { body.classList.remove('open'); h.querySelector('.step-chevron').classList.remove('open'); }
+        else openStep(h.dataset.step);
+      }));
+      document.querySelectorAll('[data-next]').forEach(b => b.addEventListener('click', () => {
+        b.closest('.booking-step').querySelector('.step-num').classList.add('done');
+        openStep(b.dataset.next);
+      }));
+      document.querySelectorAll('.time-slot').forEach(t => t.addEventListener('click', () => {
+        document.querySelectorAll('.time-slot').forEach(x => x.classList.remove('slot-active'));
+        t.classList.add('slot-active');
+      }));
+      const bform = document.getElementById('booking-form');
+      if (bform) bform.addEventListener('submit', e => {
+        e.preventDefault();
+        document.getElementById('booking-form-inner').classList.add('hidden');
+        document.getElementById('booking-success').classList.remove('hidden');
+        lucide.createIcons();
+      });
+    })();
   </script>
 </body>
 </html>
