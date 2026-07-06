@@ -50,6 +50,20 @@
       h1 { font-size: 29px !important; }
       h2 { font-size: 23px !important; }
     }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      h1 { font-size: 40px !important; line-height: 1.15 !important; }
+      h2 { font-size: 30px !important; }
+    }
+    /* ===== Layout grid — desktop: 20 cols · 200px margin · 20px gutter (at a 1440 frame);
+       scaled down for tablet and mobile. Content is centered so the side gap = the margin. ===== */
+    .gap-8, .gap-12 { gap: 16px !important; }                 /* gutter — mobile & tablet */
+    @media (min-width: 1024px) {
+      .max-w-7xl { max-width: 1040px !important; }            /* 1040 content -> ~200px side margins on a 1440 desktop */
+      .gap-8, .gap-12 { gap: 20px !important; }               /* gutter — desktop */
+    }
+    @media (min-width: 640px) and (max-width: 1023px) {
+      .px-6 { padding-left: 2.5rem !important; padding-right: 2.5rem !important; }   /* tablet side margins ~40px */
+    }
   </style>
 </head>
 <body class="w-full min-h-screen" style="background: rgb(247, 251, 255);">
@@ -60,17 +74,17 @@
       <a href="#home" class="flex items-center flex-shrink-0">
         <img class="h-14 w-auto object-contain" src="assets/logo.png" alt="Leganet Internet Solutions logo">
       </a>
-      <div class="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+      <div class="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
         <a href="#home" data-nav="home" class="font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-size: 16px;">Home</a>
         <a href="#services" data-nav="services" class="font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-size: 16px;">Services</a>
         <a href="#products" data-nav="products" class="font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-size: 16px;">Products</a>
         <a href="#about" data-nav="about" class="font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-size: 16px;">About</a>
         <a href="#contact" data-nav="contact" class="font-medium hover:text-orange-500 transition-colors" style="color: rgb(26, 26, 46); font-size: 16px;">Contact</a>
       </div>
-      <a href="#book" class="hidden md:inline-block flex-shrink-0 px-5 py-2.5 rounded-full font-medium border-2 transition-all hover:bg-blue-50" style="border-color: #0284C7; color: #0284C7; font-size: 15px;">Book a Consultation</a>
-      <button id="menu-btn" class="md:hidden text-gray-800" aria-label="Menu"><i data-lucide="menu" style="width:26px;height:26px"></i></button>
+      <a href="#book" class="hidden lg:inline-block flex-shrink-0 px-5 py-2.5 rounded-full font-medium border-2 transition-all hover:bg-blue-50" style="border-color: #0284C7; color: #0284C7; font-size: 15px;">Book a Consultation</a>
+      <button id="menu-btn" class="lg:hidden text-gray-800" aria-label="Menu"><i data-lucide="menu" style="width:26px;height:26px"></i></button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden mt-2 rounded-2xl bg-white px-6 py-3 shadow-lg">
+    <div id="mobile-menu" class="hidden lg:hidden mt-2 rounded-2xl bg-white px-6 py-3 shadow-lg">
       <a href="#home" class="block py-2.5 text-gray-700 hover:text-orange-500 font-medium">Home</a>
       <a href="#services" class="block py-2.5 text-gray-700 hover:text-orange-500 font-medium">Services</a>
       <a href="#products" class="block py-2.5 text-gray-700 hover:text-orange-500 font-medium">Products</a>
