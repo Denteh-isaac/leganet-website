@@ -609,10 +609,10 @@
                   </button>
                   <div class="step-body open">
                     <div class="grid sm:grid-cols-2 gap-4 pb-4 pt-1">
-                      <input type="text" placeholder="Full Name" class="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
-                      <input type="tel" placeholder="Phone Number" class="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
-                      <input type="email" placeholder="Email Address" class="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
-                      <select class="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-500 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
+                      <input id="bk-name" type="text" placeholder="Full Name" class="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
+                      <input id="bk-phone" type="tel" placeholder="Phone Number" class="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
+                      <input id="bk-email" type="email" placeholder="Email Address" class="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
+                      <select id="bk-service" class="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-500 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
                         <option value="">Service of Interest</option>
                         <option>Starlink Installation</option>
                         <option>Home &amp; Office WiFi</option>
@@ -633,7 +633,7 @@
                   </button>
                   <div class="step-body">
                     <div class="pb-4 pt-1">
-                      <input type="date" class="w-full sm:w-auto bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
+                      <input id="bk-date" type="date" class="w-full sm:w-auto bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
                     </div>
                     <button type="button" data-next="3" class="px-7 py-3 rounded-full font-medium transition-transform hover:scale-105" style="background: linear-gradient(135deg, #0284C7, #1D4ED8); color:#fff; font-size:15px;">Continue</button>
                   </div>
@@ -662,7 +662,7 @@
                   </button>
                   <div class="step-body">
                     <div class="pb-4 pt-1">
-                      <textarea rows="4" placeholder="Anything else we should know? (optional)" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"></textarea>
+                      <textarea id="bk-message" rows="4" placeholder="Anything else we should know? (optional)" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"></textarea>
                     </div>
                     <button type="submit" class="px-8 py-3.5 rounded-full font-medium transition-transform hover:scale-105" style="background: linear-gradient(135deg, #0284C7, #1D4ED8); color:#fff; font-size:16px;">Confirm Booking</button>
                   </div>
@@ -755,15 +755,43 @@
       });
     });
 
+    // Email delivery — sends form submissions straight to the inbox
+    // (static site, so we POST to FormSubmit which emails leganetghsupport@gmail.com)
+    const MAIL_ENDPOINT = "https://formsubmit.co/ajax/leganetghsupport@gmail.com";
+    function sendSubmission(data) {
+      return fetch(MAIL_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(Object.assign({ _captcha: "false", _template: "table" }, data))
+      }).then(r => r.json());
+    }
+    const val = id => (document.getElementById(id)?.value || "").trim();
+
     // Contact form
     const form = document.getElementById('contact-form');
     const formSuccess = document.getElementById('form-success');
     form.addEventListener('submit', e => {
       e.preventDefault();
-      form.classList.add('hidden');
-      formSuccess.classList.remove('hidden');
-      lucide.createIcons();
-      setTimeout(() => { form.reset(); form.classList.remove('hidden'); formSuccess.classList.add('hidden'); }, 3000);
+      const btn = form.querySelector('button[type="submit"]');
+      const label = btn.textContent;
+      btn.textContent = 'Sending…'; btn.disabled = true;
+      sendSubmission({
+        _subject: "📩 New Contact Message — " + (val('form-name') || 'Website'),
+        "Submission Type": "Contact Message",
+        "Name": val('form-name'),
+        "Email": val('form-email'),
+        "Phone": val('form-phone'),
+        "Service of Interest": val('form-service'),
+        "Message": val('form-message')
+      }).then(() => {
+        form.classList.add('hidden');
+        formSuccess.classList.remove('hidden');
+        lucide.createIcons();
+        setTimeout(() => { form.reset(); form.classList.remove('hidden'); formSuccess.classList.add('hidden'); btn.textContent = label; btn.disabled = false; }, 4000);
+      }).catch(() => {
+        btn.textContent = label; btn.disabled = false;
+        alert("Sorry, your message couldn't be sent right now. Please call us or email leganetghsupport@gmail.com.");
+      });
     });
 
     // Booking stepper
@@ -798,9 +826,28 @@
       const bform = document.getElementById('booking-form');
       if (bform) bform.addEventListener('submit', e => {
         e.preventDefault();
-        document.getElementById('booking-form-inner').classList.add('hidden');
-        document.getElementById('booking-success').classList.remove('hidden');
-        lucide.createIcons();
+        const btn = bform.querySelector('button[type="submit"]');
+        const label = btn.textContent;
+        btn.textContent = 'Booking…'; btn.disabled = true;
+        const slot = document.querySelector('.time-slot.slot-active');
+        sendSubmission({
+          _subject: "📅 New Consultation Booking — " + (val('bk-name') || 'Website'),
+          "Submission Type": "Consultation Booking",
+          "Name": val('bk-name'),
+          "Phone": val('bk-phone'),
+          "Email": val('bk-email'),
+          "Service of Interest": val('bk-service'),
+          "Preferred Date": val('bk-date'),
+          "Preferred Time": slot ? slot.textContent.trim() : "",
+          "Additional Message": val('bk-message')
+        }).then(() => {
+          document.getElementById('booking-form-inner').classList.add('hidden');
+          document.getElementById('booking-success').classList.remove('hidden');
+          lucide.createIcons();
+        }).catch(() => {
+          btn.textContent = label; btn.disabled = false;
+          alert("Sorry, your booking couldn't be sent right now. Please call us or email leganetghsupport@gmail.com.");
+        });
       });
     })();
   </script>
